@@ -1,0 +1,9 @@
+- file: intro
+- file: CH_1
+  sections:
+    - file: CH_1-1
+    - file: CH_1-2
+- file: CH_2
+  sections:
+    - file: CH_2-1
+    - file: notebook
