@@ -6,4 +6,8 @@
 - file: CH_2
   sections:
     - file: CH_2-1
+- file: CH_3
+  sections:
+    - file: CH_3-1
+    - file: CH_3-2
     - file: notebook
