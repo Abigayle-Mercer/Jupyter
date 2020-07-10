@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>How do you cross validate detection rates? &#8212; My Jupyter Book</title>
+    <title>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection &#8212; My Jupyter Book</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -30,7 +30,8 @@
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Results: LA Counties Estimated Infections and Rate of Detection" href="CH_3-2.html" />
+    <link rel="next" title="Chapter 3.3: How do you cross validate detection rates?" href="CH_3-4.html" />
+    <link rel="prev" title="Chapter 3.2: LA County’s Estimated Infections and Rate of Detection" href="CH_3-2.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -76,13 +77,16 @@
     <a href="CH_3.html">Chapter 3: Results</a>
   <ul class="nav sidenav_l2">
     <li class="">
-      <a href="CH_3-1.html">Results: Estimated Infections vs Confirmed Cases</a>
+      <a href="CH_3-1.html">Chapter 3.1: Estimated Infections vs Confirmed Cases</a>
     </li>
     <li class="">
-      <a href="CH_3-2.html">Results: LA Counties Estimated Infections and Rate of Detection</a>
+      <a href="CH_3-2.html">Chapter 3.2: LA County’s Estimated Infections and Rate of Detection</a>
     </li>
     <li class="active">
-      <a href="">How do you cross validate detection rates?</a>
+      <a href="">Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection</a>
+    </li>
+    <li class="">
+      <a href="CH_3-4.html">Chapter 3.3: How do you cross validate detection rates?</a>
     </li>
   </ul>
   </li>
@@ -165,28 +169,9 @@
 
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#" class="nav-link">How do you cross validate detection rates?</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#cook" class="nav-link">Cook</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#miami-dade" class="nav-link">Miami-Dade</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#riverside" class="nav-link">Riverside</a>
-        </li>
     
     </ul>
 </nav>
@@ -199,12 +184,8 @@
         
               <div>
                 
-  <div class="section" id="how-do-you-cross-validate-detection-rates">
-<h1>How do you cross validate detection rates?<a class="headerlink" href="#how-do-you-cross-validate-detection-rates" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>LA’s detection rate ranged from approximately 10-20%, and Maricopa County had a similar range. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated.
-To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest test of accuracy would pull death and case counts from a different county all together. Choosing a conservative 20% average detection rate, I compared both estimates in Cook IL, Harrison TX, and Miami-Dade FL.
-</pre></div>
-</div>
+  <div class="section" id="chapter-3-3-maricopa-county-s-estimated-infections-and-rate-of-detection">
+<h1>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection<a class="headerlink" href="#chapter-3-3-maricopa-county-s-estimated-infections-and-rate-of-detection" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -256,166 +237,95 @@ To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
-<span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
-<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">103</span><span class="p">,:]</span>
+<span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_MC</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">103</span><span class="p">,:]</span>
+<span class="n">cases_df_MC</span> <span class="o">=</span> <span class="n">cases_df_MC</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cases_df_MC</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span><span class="o">+</span><span class="mi">18</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">index_val</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span>
+        <span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
-<span class="n">cases_df_CK</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="mi">610</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
-<span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df_MC</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cook">
-<h1>Cook<a class="headerlink" href="#cook" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;death rate cases&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cases_df_CK</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;detection cases&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;total_cases&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">22</span><span class="p">))</span> 
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Case Estimates Based on a 1</span><span class="si">% d</span><span class="s1">eath rate vs 20</span><span class="si">% d</span><span class="s1">etection rate&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">,</span> <span class="n">cases_df_MC</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">suffixes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_deaths&#39;</span><span class="p">,</span> <span class="s1">&#39;_cases&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;detection_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;103_cases&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estimated Infections&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;103_cases&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Confirmed cases&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;total infections at 1%&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">21</span><span class="p">))</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11d046e50&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11753fb50&gt;
 </pre></div>
 </div>
-<img alt="_images/CH_3-3_11_1.png" src="_images/CH_3-3_11_1.png" />
+<img alt="_images/CH_3-3_12_1.png" src="_images/CH_3-3_12_1.png" />
 </div>
 </div>
+<p>This graph displays Maricopa’s estimated number of infeections, calculated with death counts and a death rate of 1%, and the the number of confimred cases of COVID 19.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
-<span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
-<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span> <span class="o">=</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="mi">55</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span><span class="o">+</span><span class="mi">18</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">index_val</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
-<span class="n">cases_df_HR</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="mi">362</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
-<span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="miami-dade">
-<h1>Miami-Dade<a class="headerlink" href="#miami-dade" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;death rate cases&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cases_df_HR</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;detection cases&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;total_cases&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">22</span><span class="p">))</span> 
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Case Estimates Based on a 1</span><span class="si">% d</span><span class="s1">eath rate vs 20</span><span class="si">% d</span><span class="s1">etection rate&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;detection_rate&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11d522b10&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x10caa9c50&gt;]],
+      dtype=object)
 </pre></div>
 </div>
-<img alt="_images/CH_3-3_16_1.png" src="_images/CH_3-3_16_1.png" />
+<img alt="_images/CH_3-3_15_1.png" src="_images/CH_3-3_15_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
-<span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
-<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span><span class="o">+</span><span class="mi">18</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">index_val</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;total_infections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
-<span class="n">cases_df_RS</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="mi">218</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
-<span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="riverside">
-<h1>Riverside<a class="headerlink" href="#riverside" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">deaths_df_RS</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;death rate cases&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cases_df_RS</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;detection cases&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;total_cases&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">22</span><span class="p">))</span> 
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Case Estimates Based on a 1</span><span class="si">% d</span><span class="s1">eath rate vs 20</span><span class="si">% d</span><span class="s1">etection rate&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11cef8b50&gt;
-</pre></div>
-</div>
-<img alt="_images/CH_3-3_21_1.png" src="_images/CH_3-3_21_1.png" />
-</div>
-</div>
+<p>To determine the average detection rate in Maricopa county, the number of reported cases is divided by it’s esetimated counterpart for each date. As displayed in the histogram, Maricopa appears to detect approximately 10-20% of all COVID 19 cases.</p>
 </div>
 
 
@@ -427,7 +337,8 @@ To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest 
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="CH_3-2.html" title="previous page">Results: LA Counties Estimated Infections and Rate of Detection</a>
+    <a class='left-prev' id="prev-link" href="CH_3-2.html" title="previous page">Chapter 3.2: LA County’s Estimated Infections and Rate of Detection</a>
+    <a class='right-next' id="next-link" href="CH_3-4.html" title="next page">Chapter 3.3: How do you cross validate detection rates?</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
