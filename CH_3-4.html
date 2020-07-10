@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3.3: How do you cross validate detection rates? &#8212; My Jupyter Book</title>
+    <title>Chapter 3.4: How do you cross validate detection rates? &#8212; My Jupyter Book</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -85,7 +85,7 @@
       <a href="CH_3-3.html">Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection</a>
     </li>
     <li class="active">
-      <a href="">Chapter 3.3: How do you cross validate detection rates?</a>
+      <a href="">Chapter 3.4: How do you cross validate detection rates?</a>
     </li>
   </ul>
   </li>
@@ -176,7 +176,7 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#" class="nav-link">Chapter 3.3: How do you cross validate detection rates?</a>
+            <a href="#" class="nav-link">Chapter 3.4: How do you cross validate detection rates?</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -202,12 +202,9 @@
         
               <div>
                 
-  <div class="section" id="chapter-3-3-how-do-you-cross-validate-detection-rates">
-<h1>Chapter 3.3: How do you cross validate detection rates?<a class="headerlink" href="#chapter-3-3-how-do-you-cross-validate-detection-rates" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>LA’s detection rate ranged from approximately 10-20%, and Maricopa County had a similar range. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated.
-To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest test of accuracy would pull death and case counts from a different county all together. Choosing a conservative 20% average detection rate, I compared both estimates in Cook IL, Harrison TX, and Miami-Dade FL.
-</pre></div>
-</div>
+  <div class="section" id="chapter-3-4-how-do-you-cross-validate-detection-rates">
+<h1>Chapter 3.4: How do you cross validate detection rates?<a class="headerlink" href="#chapter-3-4-how-do-you-cross-validate-detection-rates" title="Permalink to this headline">¶</a></h1>
+<p>LA and Maricopa’s detection rate estimated cases vs death rate estimated cases confirmed the two metrics, but, a more honest test of accuracy would pull death and case counts from a different county all together. Choosing a conservative 20% average detection rate, I compared both estimates in Cook IL, Harrison TX, and Miami-Dade FL.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -305,7 +302,7 @@ To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11b6a1110&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10de4c090&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-4_11_1.png" src="_images/CH_3-4_11_1.png" />
@@ -359,7 +356,7 @@ To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1101198d0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10e191210&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-4_16_1.png" src="_images/CH_3-4_16_1.png" />
@@ -413,7 +410,7 @@ To avoid confirmation bias of LA or Maricopa’s detection rates, a more honest 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11b562950&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10298e850&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-4_21_1.png" src="_images/CH_3-4_21_1.png" />
