@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chapter 3.5: How is the virus changing over time? &#8212; My Jupyter Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 3: Discussion and Conclusions" href="CH_4.html" />
+    <link rel="prev" title="Chapter 3.4: How do you cross validate detection rates?" href="CH_3-4.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="intro.html">INTRO</a>
+  </li>
+  <li class="">
+    <a href="CH_1.html">Chapter 1: Metrics</a>
+  </li>
+  <li class="">
+    <a href="CH_2.html">Chapter 2: Sources</a>
+  </li>
+  <li class="active">
+    <a href="CH_3.html">Chapter 3: Results</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="CH_3-1.html">Chapter 3.1: Estimated Infections vs Confirmed Cases</a>
+    </li>
+    <li class="">
+      <a href="CH_3-2.html">Chapter 3.2: LA County’s Estimated Infections and Rate of Detection</a>
+    </li>
+    <li class="">
+      <a href="CH_3-3.html">Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection</a>
+    </li>
+    <li class="">
+      <a href="CH_3-4.html">Chapter 3.4: How do you cross validate detection rates?</a>
+    </li>
+    <li class="active">
+      <a href="">Chapter 3.5: How is the virus changing over time?</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="CH_4.html">Chapter 3: Discussion and Conclusions</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/CH_3-5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/CH_3-5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#" class="nav-link">Chapter 3.5: How is the virus changing over time?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#figure-1" class="nav-link">Figure #1</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#figure-2" class="nav-link">Figure #2</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#cook" class="nav-link">Cook</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#los-angeles" class="nav-link">Los Angeles</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#miami-dade" class="nav-link">Miami-Dade</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#riverside" class="nav-link">Riverside</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#maricopa" class="nav-link">Maricopa</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-3-5-how-is-the-virus-changing-over-time">
+<h1>Chapter 3.5: How is the virus changing over time?<a class="headerlink" href="#chapter-3-5-how-is-the-virus-changing-over-time" title="Permalink to this headline">¶</a></h1>
+<p>Figures 1 and 2 are examples of the two types of curves that could represent Coronavirus infections. The first graph displays logarithmic growth, or a ‘flattened curve’, whereas the second graph increases exponentially. With a complete graph, it’s not difficult to tell the difference between the two. Imagine, however, if I stretched these two graphs out, or if you could only see the very beginning of the curves. It would be very difficult to determine what type of graph you were dealing with. In the early stages of COVID 19, there simply isn’t enough data to construct a graph complete enough to determine ‘flatness’ on visual analysis alone. Fortunately, there are some simple calculus tools that can help to easily distinguish the curve of a line. Derivatives calculate the rate of change of a function. For example, the derivative of the second graph will have a positive slope because it increases at an increasing rate as x changes. Conversely, the first graph will have a negative slope because it approaches a net change of zero as x increases. Furthermore, there are also second derivatives, which calculate the rate of change of the rate of change of a function; they are the derivative of the derivative. If the second derivative of a function is positive, then the original function will look something like the second graph, and vice versa. If a second derivitive is zero, this indicates that the original function is linear. In the case of COVID 19 cases, while not ideal, this is the type of graph we would expect infections to follow. Given what I know about the second derivative of a function, taking the second derivative of the estimated infections should yield a graph that provides a clear indication of the curve of the infection slope. I graphed a red bar at zero in the graphs of second derivitives to help evaluate if the graph is positive, negative, or zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">functions</span> <span class="kn">import</span> <span class="n">logarithmic</span><span class="p">,</span> <span class="n">exponential</span><span class="p">,</span> <span class="n">first_derivitive</span><span class="p">,</span> <span class="n">second_derivitive</span><span class="p">,</span> <span class="n">clean_deaths</span><span class="p">,</span> <span class="n">calculate_infection</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="figure-1">
+<h1>Figure #1<a class="headerlink" href="#figure-1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logarithmic</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/abigaylemercer/Desktop/Jupyter/jupyterProject/functions.py:6: RuntimeWarning: divide by zero encountered in log
+  y = (np.log(x) + 2) * 10000
+</pre>
+</div>
+<img alt="_images/CH_3-5_4_1.png" src="_images/CH_3-5_4_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="figure-2">
+<h1>Figure #2<a class="headerlink" href="#figure-2" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exponential</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_6_0.png" src="_images/CH_3-5_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
+<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">])</span>
+<span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;second_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cook">
+<h1>Cook<a class="headerlink" href="#cook" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">first_derivitive</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_13_0.png" src="_images/CH_3-5_13_0.png" />
+</div>
+</div>
+<p>Remember, Cook’s estimated infections first increase exponentially and then followed a logarithmic curve. This first derivitive, while noisy, follows an overall positive slope and then negative: as I would expect. Based off of this graph, Cook appears to be ‘flattening’ the curve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">second_derivitive</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_15_0.png" src="_images/CH_3-5_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">104</span><span class="p">,:]</span>
+<span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df_LA</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df_LA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">])</span>
+<span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;second_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="los-angeles">
+<h1>Los Angeles<a class="headerlink" href="#los-angeles" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">first_derivitive</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_20_0.png" src="_images/CH_3-5_20_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">second_derivitive</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_21_0.png" src="_images/CH_3-5_21_0.png" />
+</div>
+</div>
+<p>Both the first and second derivitive for LA county are approximately zero. Due to such a low case rate, LA has probably done well in flattening their curvee. While the second derivitive isn’t strictly negative, the case rate doesn’t ever display a large spike, so there was no where for the difference in case rate to go.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
+<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">])</span>
+<span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;second_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="miami-dade">
+<h1>Miami-Dade<a class="headerlink" href="#miami-dade" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">first_derivitive</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_27_0.png" src="_images/CH_3-5_27_0.png" />
+</div>
+</div>
+<p>Miami-Dade’s first derivitive appears to bounce around 2,500 new cases per day, with no significant increase or decrease.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">second_derivitive</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_29_0.png" src="_images/CH_3-5_29_0.png" />
+</div>
+</div>
+<p>As mentioned previously, a second derivitive of zero indicates a linear case count. Despite the variance, this graph seems to have a net change of zero. Miami-Dade’s infection rate is rising as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
+<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">deaths_df_RS</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">])</span>
+<span class="n">deaths_df_RS</span><span class="p">[</span><span class="s1">&#39;second_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="riverside">
+<h1>Riverside<a class="headerlink" href="#riverside" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">first_derivitive</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_35_0.png" src="_images/CH_3-5_35_0.png" />
+</div>
+</div>
+<p>Riverside appears to have a consistent rate of new cases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">second_derivitive</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_37_0.png" src="_images/CH_3-5_37_0.png" />
+</div>
+</div>
+<p>Here, the second derivitive bounces aroun d zero, which reflects the consistency in the case rate above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">103</span><span class="p">,:]</span>
+<span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df_MC</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">deaths_df_MC</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">])</span>
+<span class="n">deaths_df_MC</span><span class="p">[</span><span class="s1">&#39;second_derivitive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">[</span><span class="s1">&#39;first_derivitive&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="maricopa">
+<h1>Maricopa<a class="headerlink" href="#maricopa" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">first_derivitive</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_43_0.png" src="_images/CH_3-5_43_0.png" />
+</div>
+</div>
+<p>Riverside appears to have a consistent rate between 2-4 thousand new cases per day, and then increases in the last 2 weeks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">second_derivitive</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-5_45_0.png" src="_images/CH_3-5_45_0.png" />
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="CH_3-4.html" title="previous page">Chapter 3.4: How do you cross validate detection rates?</a>
+    <a class='right-next' id="next-link" href="CH_4.html" title="next page">Chapter 3: Discussion and Conclusions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

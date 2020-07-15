@@ -65,7 +65,7 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="intro.html">Welcome to your Jupyter Book</a>
+    <a href="intro.html">INTRO</a>
   </li>
   <li class="">
     <a href="CH_1.html">Chapter 1: Metrics</a>
@@ -88,7 +88,13 @@
     <li class="">
       <a href="CH_3-4.html">Chapter 3.4: How do you cross validate detection rates?</a>
     </li>
+    <li class="">
+      <a href="CH_3-5.html">Chapter 3.5: How is the virus changing over time?</a>
+    </li>
   </ul>
+  </li>
+  <li class="">
+    <a href="CH_4.html">Chapter 3: Discussion and Conclusions</a>
   </li>
 </ul>
 </nav>
@@ -192,6 +198,7 @@
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">functions</span> <span class="kn">import</span> <span class="n">clean_deaths</span><span class="p">,</span> <span class="n">clean_cases</span>
 </pre></div>
 </div>
 </div>
@@ -205,12 +212,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="p">[</span><span class="n">deaths_df</span><span class="p">[</span><span class="s1">&#39;iso3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;USA&#39;</span><span class="p">]</span> 
-<span class="n">deaths_df</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">deaths_df</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">deaths_df</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span> 
-<span class="n">deaths_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;US_Deaths.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">deaths_df</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;UID&#39;</span><span class="p">,</span> <span class="s1">&#39;iso2&#39;</span><span class="p">,</span> <span class="s1">&#39;iso3&#39;</span><span class="p">,</span> <span class="s1">&#39;code3&#39;</span><span class="p">,</span> <span class="s1">&#39;Country_Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;Long_&#39;</span><span class="p">,</span> <span class="s1">&#39;Combined_Key&#39;</span><span class="p">,</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="s1">&#39;Admin2&#39;</span><span class="p">,</span> <span class="s1">&#39;Province_State&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -224,13 +226,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df</span> <span class="o">=</span> <span class="n">cases_df</span><span class="p">[</span><span class="n">cases_df</span><span class="p">[</span><span class="s1">&#39;iso3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;USA&#39;</span><span class="p">]</span> 
-<span class="n">cases_df</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">cases_df</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cases_df</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span> 
-<span class="n">cases_df</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span> 
-<span class="n">cases_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;US_Confirmed.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">cases_df</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;UID&#39;</span><span class="p">,</span> <span class="s1">&#39;iso2&#39;</span><span class="p">,</span> <span class="s1">&#39;iso3&#39;</span><span class="p">,</span> <span class="s1">&#39;code3&#39;</span><span class="p">,</span> <span class="s1">&#39;Country_Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;Long_&#39;</span><span class="p">,</span> <span class="s1">&#39;Combined_Key&#39;</span><span class="p">,</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="s1">&#39;Admin2&#39;</span><span class="p">,</span> <span class="s1">&#39;Province_State&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df</span> <span class="o">=</span> <span class="n">clean_cases</span><span class="p">(</span><span class="n">cases_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -297,7 +293,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1189ba490&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x111cf3910&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_12_1.png" src="_images/CH_3-3_12_1.png" />
@@ -318,7 +314,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x119729a90&gt;]],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x111d36590&gt;]],
       dtype=object)
 </pre></div>
 </div>
@@ -346,15 +342,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1191cec90&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x111b19c50&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_18_1.png" src="_images/CH_3-3_18_1.png" />
 </div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Maricopa’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated. In this graph I chose a conservative 20% detection rate, and divided confirmed cases by that decimal aproximation. To cross validate for accuracy, the detection rate cases are compared to the original infection estimation based on a 1% death rate and reported deaths. 
-</pre></div>
-</div>
+<p>Maricopa’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated. In this graph I chose a conservative 20% detection rate, and divided confirmed cases by that decimal aproximation. To cross validate for accuracy, the detection rate cases are compared to the original infection estimation based on a 1% death rate and reported deaths.</p>
 </div>
 
 
