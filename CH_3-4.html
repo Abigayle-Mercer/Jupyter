@@ -229,52 +229,16 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df</span> <span class="o">=</span> <span class="n">clean_cases</span><span class="p">(</span><span class="n">cases_df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
+<span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
+<span class="n">cases_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv&#39;</span><span class="p">)</span>
+<span class="n">cases_df</span> <span class="o">=</span> <span class="n">clean_cases</span><span class="p">(</span><span class="n">cases_df</span><span class="p">)</span>
+<span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
 <span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
 <span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 <span class="n">cases_df_CK</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="mi">610</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
 <span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
@@ -291,9 +255,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CH_3-4_11_0.png" src="_images/CH_3-4_11_0.png" />
+<img alt="_images/CH_3-4_5_0.png" src="_images/CH_3-4_5_0.png" />
 </div>
 </div>
+<p>First, this graph is very compelling evidence towards validating both death rate and detection rate metrics. Both infection estimates within Cook county follow nearly exact trajectorys, with detection rate based estimates about 2 weeks behind the death rate. As aformentioned, case counts have a high likely hood of being inaccurate and low. Cook county may also be delayed in logging cases, due to the influx of Corona patients, their health care may have been overwhelmed. Whichever estimate you examine, however, Cook county appears to have slowed their case rate down damatically and is approaching approximately half a million infections. With a population of over five million people, if Cook caps their total cases at 500,000, they will have managed to only infect 1/10 of their population with COVID 19.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
@@ -301,20 +266,8 @@
 <span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
 <span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 <span class="n">cases_df_HR</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="mi">362</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
 <span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
@@ -331,9 +284,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CH_3-4_16_0.png" src="_images/CH_3-4_16_0.png" />
+<img alt="_images/CH_3-4_9_0.png" src="_images/CH_3-4_9_0.png" />
 </div>
 </div>
+<p>The similar curves of Miami-Dade’s infection estimates make this a highly compelling graph that could validate both estimates and the metrics used. Both estimates show an initial spike that nearly flattens, and then rises again exponentially around mid June. After looking into Miami-Dade’s important dates involving COVID 19 policy, I found that in early June the county of Miami-Dade opened all entertainment venues, bars, city dog parks, gyms and fitness centers, and a limited number of beaches and pools. Such a wide scale reopening could explain the spike in infections two weeks later.
+Unlike Cook county, the detection rate based estimate surpasses death rate estimates in early April, rising substantially higher in the most recent estimates. This may be due to more wide spread COVID 19 testing, or even poor accuracy in death reporting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
@@ -341,20 +296,8 @@
 <span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
 <span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 <span class="n">cases_df_RS</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="mi">218</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
 <span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
@@ -371,9 +314,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CH_3-4_21_0.png" src="_images/CH_3-4_21_0.png" />
+<img alt="_images/CH_3-4_13_0.png" src="_images/CH_3-4_13_0.png" />
 </div>
 </div>
+<p>Like Cook county, Riverside’s death rate based estimates are about 2 weeks behind detection rate based estimates. And like Maricopa county, those estimates cross over eachother around early June, where the death rate estimate rises exponentially while detection rate continues linearly. As stated previously, any infection estimate based on a the confirmed case count is subject to the inaccuracies intrinsic to the nature of case count reports. Moving forward, as more tests become available, this metric will approach the true number of infections. Early estimates that involve confirmed cases, however, are likely to be lower than the true count.</p>
+<p>As you can see, the plots of both infection estimates for Cook, Miami-Dade, and Riverside follow similar curves and trajectorys. While detection rate is calculated using death rate, each metric was applied to an independant variable and still yielded remarkable similar graphs. This sort of ‘cross-referencing’ of metrics confirms both methods as a means of estimated true infection counts.</p>
 </div>
 
 
