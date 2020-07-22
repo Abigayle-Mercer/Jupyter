@@ -216,7 +216,7 @@
 <h1>Chapter 3.6: How might the virus spread in the future?<a class="headerlink" href="#chapter-3-6-how-might-the-virus-spread-in-the-future" title="Permalink to this headline">¶</a></h1>
 <p>Without sufficient data, it’s virtually impossible to predict exactly how the virus will spread. There are too many unknown variables: how counties will react with policy, the compliency of citizens, if and how the virus may evolve, and whether or not health care systems will be able to accomodate new cases.<br />
 There are tools that can extrapolate out possible predictions, but the results are based on the assumption that nothing changes, which is highly unlikely. Understanding the bias that this method introduces, I used a package called curvefit to predict the course of the virus in different counties and where the infection count may cap.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -228,13 +228,16 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
 <span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
+
 <span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
 <span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
 <span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
 <span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
 <span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
@@ -244,7 +247,7 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 <div class="section" id="miami-dade-county">
 <h1>Miami-Dade County<a class="headerlink" href="#miami-dade-county" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rate</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">maximum</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">midpoint</span><span class="p">)))</span>
@@ -258,9 +261,9 @@ There are tools that can extrapolate out possible predictions, but the results a
     <span class="k">return</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
 
-<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">163</span><span class="p">),</span>  <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">164</span><span class="p">),</span>  <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">163</span><span class="p">),</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">164</span><span class="p">),</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">xmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">ymodel1</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">xmodel</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">)</span>
@@ -281,17 +284,20 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>197009.07735778438
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>203560.6181696336
 </pre></div>
 </div>
 <img alt="_images/CH_3-6_5_1.png" src="_images/CH_3-6_5_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<p>The data points for Miami-Dade don’t appear to be on a flattened trajetory yet, whereas the curvefit model suggests that Miami-Dade will reach it’s maximum number of infections relatively soon.</p>
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
 <span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
 <span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
 <span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
 <span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
@@ -301,7 +307,7 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 <div class="section" id="cook-county">
 <h1>Cook County<a class="headerlink" href="#cook-county" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rate</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">maximum</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">midpoint</span><span class="p">)))</span>
@@ -315,9 +321,9 @@ There are tools that can extrapolate out possible predictions, but the results a
     <span class="k">return</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
 
-<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">163</span><span class="p">),</span>  <span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">164</span><span class="p">),</span>  <span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">163</span><span class="p">),</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">164</span><span class="p">),</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">xmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">ymodel1</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">xmodel</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">)</span>
@@ -338,17 +344,19 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>479339.6641510653
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>479745.25923068443
 </pre></div>
 </div>
 <img alt="_images/CH_3-6_9_1.png" src="_images/CH_3-6_9_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">204</span><span class="p">,:]</span>
 <span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df_LA</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
 <span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
 <span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
 <span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df_LA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 </pre></div>
@@ -358,7 +366,7 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 <div class="section" id="los-angeles-county">
 <h1>Los Angeles County<a class="headerlink" href="#los-angeles-county" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rate</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">maximum</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">midpoint</span><span class="p">)))</span>
@@ -372,9 +380,9 @@ There are tools that can extrapolate out possible predictions, but the results a
     <span class="k">return</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
 
-<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">163</span><span class="p">),</span>  <span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">164</span><span class="p">),</span>  <span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">163</span><span class="p">),</span> <span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">20000</span><span class="p">)</span>
+<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">164</span><span class="p">),</span> <span class="n">deaths_df_LA</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">20000</span><span class="p">)</span>
 
 <span class="n">xmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">ymodel1</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">xmodel</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">)</span>
@@ -395,7 +403,7 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>456030.27579991287
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>462628.1408072187
 </pre></div>
 </div>
 <img alt="_images/CH_3-6_13_1.png" src="_images/CH_3-6_13_1.png" />
