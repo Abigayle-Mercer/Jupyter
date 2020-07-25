@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3.2: LA County’s Estimated Infections and Rate of Detection &#8212; My Jupyter Book</title>
+    <title>Chapter 3.2: LA County’s Estimated Infections and Rate of Detection &#8212; COOL TITLE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  <h1 class="site-logo" id="site-title">COOL TITLE</h1>
   
 </a>
 </div>
@@ -68,7 +68,7 @@
     <a href="intro.html">INTRO</a>
   </li>
   <li class="">
-    <a href="CH_1.html">Chapter 1: Jargon</a>
+    <a href="CH_1.html">Chapter 1: Framework</a>
   </li>
   <li class="">
     <a href="CH_2.html">Chapter 2: Sources</a>
@@ -89,10 +89,10 @@
       <a href="CH_3-4.html">Chapter 3.4: How do you cross validate detection rates?</a>
     </li>
     <li class="">
-      <a href="CH_3-5.html">Chapter 3.5: How is the virus changing over time?</a>
+      <a href="CH_3-5.html">Chapter 3.5: How might the virus spread in the future?</a>
     </li>
     <li class="">
-      <a href="CH_3-6.html">Chapter 3.6: How might the virus spread in the future?</a>
+      <a href="CH_3-6.html">Chapter 3.6: How is the virus changing over time?</a>
     </li>
   </ul>
   </li>
@@ -159,23 +159,6 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/CH_3-2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
 
@@ -208,7 +191,7 @@
 <div class="cell tag_hide docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://lacdph.shinyapps.io/covid19_surveillance_dashboard/_w_355748cc/session/7b519430b33e061672e690e7aa06a2c1/download/download3?w=355748cc&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://lacdph.shinyapps.io/covid19_surveillance_dashboard/_w_f37c9304/session/10ab1e924bbee098b7a65bee8613174d/download/download3?w=f37c9304&#39;</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;LA_Backup.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;LA_Backup.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">)</span>
@@ -241,7 +224,7 @@
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Using LA backup file.
 </pre></div>
 </div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1193e9f50&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10d570d10&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-2_2_2.png" src="_images/CH_3-2_2_2.png" />
@@ -257,7 +240,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x11946bc10&gt;]],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x110991050&gt;]],
       dtype=object)
 </pre></div>
 </div>
@@ -280,7 +263,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x119a01550&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x110e8f950&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-2_6_1.png" src="_images/CH_3-2_6_1.png" />
@@ -306,7 +289,7 @@
     <div class="container">
       <p>
         
-          By The Jupyter Book community<br/>
+          By Abigayle Mercer<br/>
         
             &copy; Copyright 2020.<br/>
       </p>

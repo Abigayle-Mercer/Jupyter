@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection &#8212; My Jupyter Book</title>
+    <title>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection &#8212; COOL TITLE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  <h1 class="site-logo" id="site-title">COOL TITLE</h1>
   
 </a>
 </div>
@@ -68,7 +68,7 @@
     <a href="intro.html">INTRO</a>
   </li>
   <li class="">
-    <a href="CH_1.html">Chapter 1: Jargon</a>
+    <a href="CH_1.html">Chapter 1: Framework</a>
   </li>
   <li class="">
     <a href="CH_2.html">Chapter 2: Sources</a>
@@ -89,10 +89,10 @@
       <a href="CH_3-4.html">Chapter 3.4: How do you cross validate detection rates?</a>
     </li>
     <li class="">
-      <a href="CH_3-5.html">Chapter 3.5: How is the virus changing over time?</a>
+      <a href="CH_3-5.html">Chapter 3.5: How might the virus spread in the future?</a>
     </li>
     <li class="">
-      <a href="CH_3-6.html">Chapter 3.6: How might the virus spread in the future?</a>
+      <a href="CH_3-6.html">Chapter 3.6: How is the virus changing over time?</a>
     </li>
   </ul>
   </li>
@@ -159,23 +159,6 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/CH_3-3.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
 
@@ -195,7 +178,7 @@
                 
   <div class="section" id="chapter-3-3-maricopa-county-s-estimated-infections-and-rate-of-detection">
 <h1>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection<a class="headerlink" href="#chapter-3-3-maricopa-county-s-estimated-infections-and-rate-of-detection" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_hide docutils container">
+<div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -206,7 +189,7 @@
 </div>
 </div>
 </div>
-<div class="cell tag_hide docutils container">
+<div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
 <span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
@@ -243,14 +226,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10ebe7d50&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1227b6b50&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_2_1.png" src="_images/CH_3-3_2_1.png" />
 </div>
 </div>
 <p>This graph displays Maricopa’s estimated number of infeections, calculated with death counts and a death rate of 1%, and the the number of confimred cases of COVID 19. Both infection estimate and confirmed cases are on a accelerating trajectory, but similar to LA county, Maricopa’s confirmed case count is substantially lower than the possible true number of infections.</p>
-<div class="cell tag_hide docutils container">
+<div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span> <span class="o">=</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="mi">55</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">merged_df_MC</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;detection_rate&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -258,7 +241,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x1028ae710&gt;]],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x1227b6c10&gt;]],
       dtype=object)
 </pre></div>
 </div>
@@ -266,7 +249,7 @@
 </div>
 </div>
 <p>To determine the average detection rate in Maricopa county, the number of reported cases is divided by it’s esetimated counterpart for each date. As displayed in the histogram, Maricopa appears to detect approximately 10-20% of all COVID 19 cases.</p>
-<div class="cell tag_hide docutils container">
+<div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;103_cases&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
 
@@ -281,7 +264,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10eaa7f90&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10fad6c10&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_6_1.png" src="_images/CH_3-3_6_1.png" />
@@ -307,7 +290,7 @@
     <div class="container">
       <p>
         
-          By The Jupyter Book community<br/>
+          By Abigayle Mercer<br/>
         
             &copy; Copyright 2020.<br/>
       </p>
