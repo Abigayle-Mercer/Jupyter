@@ -7,12 +7,12 @@ My experience analyzing data, before beginning my internship at Jupyter, was lim
 Questions I sought to answer:    
 1.) What are the true number of infections in the USA?  
 2.) Survey most populated counties: what are the number of infections over days for  
-       a. LA   
-       b. Cook  
-       c. NYC  
-       d. Maricopa  
-       e. Miami-Dade  
-       f. My home county (Lane County)   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. LA   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Cook  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. NYC  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d. Maricopa  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e. Miami-Dade  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f. My home county (Lane County)   
 3.) Where are “we” flattening the curve?  
 
 
