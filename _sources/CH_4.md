@@ -11,7 +11,9 @@ I have learned two main ways to estimate the true number of infections. One uses
        c. NYC    
        d. Maricopa      
        e. Miami-Dade    
-       f. My home county (Lane County)     
+       f. My home county (Lane County)   
+       
+I calculated an estimate for the numbner of infections in each county using both methods of calculation (death rate and detection rate applied to death count and confirmed cases). 
   
 3.) Are we flattening the curve?    
 
@@ -19,4 +21,4 @@ To determine if the U.S. is 'flattening the curve', one must first define what e
 
 Flattening the curve actually has to do with the number I calculated using the curvefit models back in chapter 3.5: the maximum potential number of infections. For example, if a county initiates lock down protocol, and their maximum possible number of infections decreases from 300,000 to 250,000 because of this, they would have flattened the curve. The maximum potential number of infections is the value on the x axis where a function completely turns over. 
 
-Using curvefit, I had a crude estimate for where the total possible number of infections may reach for a given county. The only way to determine if that county has flattened the curve, however, is if the original potential number of infections is a known quantity. In epidemiology, it's understood that most virus's don't infect the entire population, due to herd immunity. Exactly how many, or what *ratio* of the population will be infected, is extremely difficult to predict, especially in situation where very little is known about the virus. Without the original potential number of infections for comparison, it is impossible to determine if we are 'flattening the curve'. 
+Using curvefit, I had a crude estimate for where the total possible number of infections may reach for a given county. The only way to determine if that county has flattened the curve, however, is if the original potential number of infections is a known quantity. In epidemiology, it's understood that most virus's don't infect the entire population, due to herd immunity. Exactly how many, or what *ratio* of the population will be infected, is extremely difficult to predict, especially in situation where very little is known about the virus. Without the original potential number of infections for comparison, it is impossible me to determine if we are 'flattening the curve' with the tools and information available to me. 

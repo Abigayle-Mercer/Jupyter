@@ -176,7 +176,7 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#miami-dade-s-infection-rate-by-day" class="nav-link">Miami-Dade’s infection rate by day</a>
+            <a href="#maricopa-s-infection-rate-by-day" class="nav-link">Maricopa’s infection rate by day</a>
         </li>
     
     </ul>
@@ -193,7 +193,7 @@
   <div class="section" id="chapter-3-7-how-is-the-infection-rate-affected-by-public-activity">
 <h1>Chapter 3.7: How is the infection rate affected by public activity?<a class="headerlink" href="#chapter-3-7-how-is-the-infection-rate-affected-by-public-activity" title="Permalink to this headline">¶</a></h1>
 <p>      From the very beggining of this internship, one of the most pressing questions was prompted with was how has recent public activity affected the COVID 19 infection rate? Have the recent protests caused a spike in infections? Are government stay at home ordes actually slowing down the virus? Can counties open up buisnesses without endangering public health? Investigating these questions requires a method of inspecting county infection rate. Using the graphs I produced in chapter 3.6, and public records of COVID 19 updates for Miami-Dade and LA county, I searched for a corelation between public activity and changes in infection rate.<br />
-      Defining what constitutes as causation, rather than correlation, is important in determining whether or not these public events cause spikes or declines in infection rate. On average, COVID 19 has a two week incubation period. So, if a group of people were all exposed to the virus on the same day, I would expect a spike in infections roughly 2 weeks later. In the event that a group of people were not all exposed on the same day, rather, over a range of possible days, I would expect a distict but gradual increase in the case rate, beggining two weeks later.</p>
+      Defining what constitutes as causation, rather than correlation, is important in determining whether or not these public events cause spikes or declines in infection rate. On average, COVID 19 has a five day incubation period according to the CDC. So, if a group of people were all exposed to the virus on the same day, I would expect a spike in cases roughly 5 days later. In the event that a group of people were not all exposed on the same day, rather, over a range of possible days, I would expect a distict but gradual increase in the case rate, beggining 5 days later.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -211,15 +211,15 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
 <span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
 
-<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
-<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">deaths_df_MR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">103</span><span class="p">,:]</span>
+<span class="n">deaths_df_MR</span> <span class="o">=</span> <span class="n">deaths_df_MR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
-<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_MR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
-<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
-<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_MR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+<span class="n">deaths_df_MR</span> <span class="o">=</span> <span class="n">deaths_df_MR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
 
-<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_MR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -238,9 +238,9 @@
     <span class="k">return</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
 
-<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">),</span>  <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">),</span>  <span class="n">deaths_df_MR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
 
-<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">),</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">),</span> <span class="n">deaths_df_MR</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">xmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
 <span class="n">ymodel1</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">xmodel</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">)</span>
@@ -249,40 +249,99 @@
 
 <span class="n">first_derivative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">ymodel2</span><span class="p">)</span>
 <span class="n">second_derivative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">first_derivative</span><span class="p">)</span>
-
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="miami-dade-s-infection-rate-by-day">
-<h1>Miami-Dade’s infection rate by day<a class="headerlink" href="#miami-dade-s-infection-rate-by-day" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="maricopa-s-infection-rate-by-day">
+<h1>Maricopa’s infection rate by day<a class="headerlink" href="#maricopa-s-infection-rate-by-day" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">first_derivative</span> <span class="o">/</span> <span class="mi">2716940</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;death rate cases&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">deaths_df_MR</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">first_derivative</span> <span class="o">/</span> <span class="mi">2716940</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;death rate cases&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Infection Rate (number of infections per day)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of estimated new cases per day&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">22</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">index_val</span><span class="o">-</span><span class="mi">66</span><span class="p">,</span> <span class="mf">0.00035</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">index_val</span><span class="o">-</span><span class="mi">56</span><span class="p">,</span> <span class="mf">0.00029</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x10dee4950&gt;,
-  &lt;matplotlib.axis.XTick at 0x117f0d890&gt;,
-  &lt;matplotlib.axis.XTick at 0x117987690&gt;,
-  &lt;matplotlib.axis.XTick at 0x116064350&gt;,
-  &lt;matplotlib.axis.XTick at 0x1160648d0&gt;,
-  &lt;matplotlib.axis.XTick at 0x116064dd0&gt;,
-  &lt;matplotlib.axis.XTick at 0x116068390&gt;,
-  &lt;matplotlib.axis.XTick at 0x1160688d0&gt;],
- &lt;a list of 8 Text major ticklabel objects&gt;)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x122dd54d0&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-7_6_1.png" src="_images/CH_3-7_6_1.png" />
 </div>
 </div>
+<p>The first blue dot on this graph marks the date when Maricopa began reopening, starting with salons and dine-in restarants. The orange dot marks when the stay home order offically expired. The date which Maricopa lifted their stay at home order seems to be the most compelling, as it lies on graph where the infection rate begins increasing again. This suggests Maricopa’s policy changes directly caused a new spike in their county’s infections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_MD</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
+<span class="n">deaths_df_MD</span> <span class="o">=</span> <span class="n">deaths_df_MD</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_MD</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_MD</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+<span class="n">deaths_df_MD</span> <span class="o">=</span> <span class="n">deaths_df_MD</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_MD</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rate</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">maximum</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">midpoint</span><span class="p">)))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="c1"># + logistic(x, midpoint=6, rate=2, maximum=5)</span>
+
+
+
+<span class="k">def</span> <span class="nf">double_log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+
+
+<span class="n">popt1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">),</span>  <span class="n">deaths_df_MD</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxfev</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
+
+<span class="n">popt2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">double_log</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">),</span> <span class="n">deaths_df_MD</span><span class="p">[</span><span class="s1">&#39;total_infections&#39;</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">xmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_val</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+<span class="n">ymodel1</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">xmodel</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">)</span>
+
+<span class="n">ymodel2</span> <span class="o">=</span> <span class="n">double_log</span><span class="p">(</span><span class="n">xmodel</span><span class="p">,</span> <span class="o">*</span><span class="n">popt2</span><span class="p">)</span>
+
+<span class="n">first_derivative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">ymodel2</span><span class="p">)</span>
+<span class="n">second_derivative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">first_derivative</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">deaths_df_MD</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">first_derivative</span> <span class="o">/</span> <span class="mi">2716940</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;death rate cases&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Infection Rate (number of infections per day)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of estimated new cases per day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">22</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">index_val</span><span class="o">-</span><span class="mi">58</span><span class="p">,</span> <span class="mf">0.000279</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">index_val</span><span class="o">-</span><span class="mi">52</span><span class="p">,</span> <span class="mf">0.000293</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x122d13cd0&gt;
+</pre></div>
+</div>
+<img alt="_images/CH_3-7_10_1.png" src="_images/CH_3-7_10_1.png" />
+</div>
+</div>
+<p>The first blue dot on this graph marks the date when Miami-Dade began reopening, beggining with their three marina facilities on May 14th. The orange dot marks when all essential and non essential businesses were allowed to reopen to customers. In this case, Miami-Dade’s reopening data appears to be the catalyst in their recent infection spike. Like Maricopa’s orange dot, the blue marker lies at the point on the graph where the infection rate begins rising again, suggesting that it directly caused the spike.</p>
 </div>
 
 
