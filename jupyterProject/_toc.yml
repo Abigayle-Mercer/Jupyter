@@ -3,6 +3,7 @@
   sections:
     - file: CH_1-1
     - file: CH_1-2
+    - file: CH_1-3
 - file: CH_2
   sections:
     - file: CH_2-1
@@ -10,4 +11,11 @@
   sections:
     - file: CH_3-1
     - file: CH_3-2
-    - file: notebook
+    - file: CH_3-3
+    - file: CH_3-4
+    - file: CH_3-5
+    - file: CH_3-6
+    - file: CH_3-7
+- file: CH_4
+- file: References
+  

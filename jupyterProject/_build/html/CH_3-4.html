@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chapter 3.4: How do you cross validate detection rates? &#8212; An analysis of COVID 19: confirmed cases undermine our current predicament</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 3.5: How might the virus spread in the future?" href="CH_3-5.html" />
+    <link rel="prev" title="Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection" href="CH_3-3.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">An analysis of COVID 19: confirmed cases undermine our current predicament</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="intro.html">INTRO</a>
+  </li>
+  <li class="">
+    <a href="CH_1.html">Chapter 1: Framework</a>
+  </li>
+  <li class="">
+    <a href="CH_2.html">Chapter 2: Sources</a>
+  </li>
+  <li class="active">
+    <a href="CH_3.html">Chapter 3: Results</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="CH_3-1.html">Chapter 3.1: Estimated Infections vs Confirmed Cases</a>
+    </li>
+    <li class="">
+      <a href="CH_3-2.html">Chapter 3.2: LA County’s Estimated Infections and Rate of Detection</a>
+    </li>
+    <li class="">
+      <a href="CH_3-3.html">Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection</a>
+    </li>
+    <li class="active">
+      <a href="">Chapter 3.4: How do you cross validate detection rates?</a>
+    </li>
+    <li class="">
+      <a href="CH_3-5.html">Chapter 3.5: How might the virus spread in the future?</a>
+    </li>
+    <li class="">
+      <a href="CH_3-6.html">Chapter 3.6: How is the virus changing over time?</a>
+    </li>
+    <li class="">
+      <a href="CH_3-7.html">Chapter 3.7: How is the infection rate affected by public activity?</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="CH_4.html">Chapter 4: Discussion and Conclusions</a>
+  </li>
+  <li class="">
+    <a href="References.html">References</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/CH_3-4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#" class="nav-link">Chapter 3.4: How do you cross validate detection rates?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#cook" class="nav-link">Cook</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#miami-dade" class="nav-link">Miami-Dade</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#riverside" class="nav-link">Riverside</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-3-4-how-do-you-cross-validate-detection-rates">
+<h1>Chapter 3.4: How do you cross validate detection rates?<a class="headerlink" href="#chapter-3-4-how-do-you-cross-validate-detection-rates" title="Permalink to this headline">¶</a></h1>
+<p>LA and Maricopa’s detection rate estimated cases vs death rate estimated cases confirmed the two metrics, but, a more honest test of accuracy would pull death and case counts from a different county all together. Choosing a conservative 20% average detection rate, I compared both estimates in Cook IL, Harrison TX, and Miami-Dade FL. If the estimations based on case count / detection rate, and death count / death rate, were reasonably similar, then I can assume that both metrics yield fairly accurate estimations of COVID infections in these counties.</p>
+<div class="cell tag_hide tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">functions</span> <span class="kn">import</span> <span class="n">calculate_infection</span><span class="p">,</span> <span class="n">detection_plot</span><span class="p">,</span> <span class="n">clean_deaths</span><span class="p">,</span> <span class="n">clean_cases</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
+<span class="n">deaths_df</span> <span class="o">=</span> <span class="n">clean_deaths</span><span class="p">(</span><span class="n">deaths_df</span><span class="p">)</span>
+<span class="n">cases_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv&#39;</span><span class="p">)</span>
+
+<span class="n">cases_df</span> <span class="o">=</span> <span class="n">clean_cases</span><span class="p">(</span><span class="n">cases_df</span><span class="p">)</span>
+
+<span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
+<span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
+<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+
+<span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">cases_df_CK</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="mi">610</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
+<span class="n">cases_df_CK</span> <span class="o">=</span> <span class="n">cases_df_CK</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cook">
+<h1>Cook<a class="headerlink" href="#cook" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detection_plot</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">cases_df_CK</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-4_5_0.png" src="_images/CH_3-4_5_0.png" />
+</div>
+</div>
+<p>First, this graph is very compelling evidence towards validating both death rate and detection rate metrics. Both infection estimates within Cook county follow nearly parallel trajectorys, with detection rate based estimates about 2 weeks behind the death rate. As aformentioned, case counts have a high likely hood of being inaccurate and low. Cook county may also be delayed in logging cases, due to the influx of Corona patients, their health care may have been overwhelmed. Whichever estimate you examine, however, Cook county appears to have slowed their case rate down damatically and is approaching approximately half a million infections. With a population of over five million people, if Cook caps their total cases at 500,000, they will have managed to only infect 1/10 of their population with COVID 19.</p>
+<div class="cell tag_hide tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
+<span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
+<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+
+<span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">cases_df_HR</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="mi">362</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
+<span class="n">cases_df_HR</span> <span class="o">=</span> <span class="n">cases_df_HR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="miami-dade">
+<h1>Miami-Dade<a class="headerlink" href="#miami-dade" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detection_plot</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">cases_df_HR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-4_9_0.png" src="_images/CH_3-4_9_0.png" />
+</div>
+</div>
+<p>The similar curves of Miami-Dade’s infection estimates make this a highly compelling graph that could validate both estimates and the metrics used. Both estimates show an initial spike that nearly flattens, and then rises again exponentially around mid June. After looking into Miami-Dade’s important dates involving COVID 19 policy, I found that in early June the county of Miami-Dade opened all entertainment venues, bars, city dog parks, gyms and fitness centers, and a limited number of beaches and pools. Such a wide scale reopening could explain the spike in infections two weeks later.
+Unlike Cook county, the detection rate based estimate surpasses death rate estimates in early April, rising substantially higher in the most recent estimates. This may be due to more wide spread COVID 19 testing, or even poor accuracy in death reporting.</p>
+<div class="cell tag_hide tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
+<span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
+<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">index_val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">calculate_infection</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">,</span> <span class="n">index_val</span><span class="p">)</span>
+
+<span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">cases_df_RS</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="mi">218</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
+<span class="n">cases_df_RS</span> <span class="o">=</span> <span class="n">cases_df_RS</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">18</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="riverside">
+<h1>Riverside<a class="headerlink" href="#riverside" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detection_plot</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">,</span> <span class="n">cases_df_RS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CH_3-4_13_0.png" src="_images/CH_3-4_13_0.png" />
+</div>
+</div>
+<p>Like Cook county, Riverside’s death rate based estimates are about 2 weeks behind detection rate based estimates. And like Maricopa county, those estimates cross over eachother around early June, where the death rate estimate rises exponentially while detection rate continues linearly. As stated previously, any infection estimate based on a the confirmed case count is subject to the inaccuracies intrinsic to the nature of case count reports. Moving forward, as more tests become available, this metric will approach the true number of infections. Early estimates that involve confirmed cases, however, are likely to be lower than the true count.</p>
+<p>As you can see, the plots of both infection estimates for Cook, Miami-Dade, and Riverside follow similar curves and trajectorys. While detection rate is calculated using death rate, each metric was applied to an independant variable and still yielded remarkable similar graphs. This sort of ‘cross-referencing’ of metrics confirms both methods as a means of estimated true infection counts.</p>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="CH_3-3.html" title="previous page">Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection</a>
+    <a class='right-next' id="next-link" href="CH_3-5.html" title="next page">Chapter 3.5: How might the virus spread in the future?</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Abigayle Mercer<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

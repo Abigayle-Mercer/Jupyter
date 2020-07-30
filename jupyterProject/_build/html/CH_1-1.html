@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 1.1: Terminology &#8212; My Jupyter Book</title>
+    <title>Chapter 1.1: Terminology &#8212; An analysis of COVID 19: confirmed cases undermine our current predicament</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 1.1: Metrics" href="CH_1-2.html" />
-    <link rel="prev" title="Chapter 1: Metrics" href="CH_1.html" />
+    <link rel="next" title="Chapter 1.2: Metrics" href="CH_1-2.html" />
+    <link rel="prev" title="Chapter 1: Framework" href="CH_1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  <h1 class="site-logo" id="site-title">An analysis of COVID 19: confirmed cases undermine our current predicament</h1>
   
 </a>
 </div>
@@ -65,16 +65,19 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="intro.html">Welcome to your Jupyter Book</a>
+    <a href="intro.html">INTRO</a>
   </li>
   <li class="active">
-    <a href="CH_1.html">Chapter 1: Metrics</a>
+    <a href="CH_1.html">Chapter 1: Framework</a>
   <ul class="nav sidenav_l2">
     <li class="active">
       <a href="">Chapter 1.1: Terminology</a>
     </li>
     <li class="">
-      <a href="CH_1-2.html">Chapter 1.1: Metrics</a>
+      <a href="CH_1-2.html">Chapter 1.2: Metrics</a>
+    </li>
+    <li class="">
+      <a href="CH_1-3.html">Chapter 1.3: Making Predictions</a>
     </li>
   </ul>
   </li>
@@ -83,6 +86,12 @@
   </li>
   <li class="">
     <a href="CH_3.html">Chapter 3: Results</a>
+  </li>
+  <li class="">
+    <a href="CH_4.html">Chapter 4: Discussion and Conclusions</a>
+  </li>
+  <li class="">
+    <a href="References.html">References</a>
   </li>
 </ul>
 </nav>
@@ -166,7 +175,7 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#why-are-confirmed-cases-a-poor-metric-for-how-bad-the-pandemic-is" class="nav-link">Why are “confirmed cases” a poor metric for how bad the pandemic is?</a>
+            <a href="#why-are-confirmed-cases-a-poor-metric-for-evaluating-the-state-of-the-pandemic" class="nav-link">Why are “confirmed cases” a poor metric for evaluating the state of the pandemic?</a>
         </li>
     
     </ul>
@@ -182,22 +191,21 @@
                 
   <div class="section" id="chapter-1-1-terminology">
 <h1>Chapter 1.1: Terminology<a class="headerlink" href="#chapter-1-1-terminology" title="Permalink to this headline">¶</a></h1>
-<p>What do the following metrics mean?</p>
 <div class="section" id="number-of-confirmed-cases">
 <h2>Number of confirmed cases:<a class="headerlink" href="#number-of-confirmed-cases" title="Permalink to this headline">¶</a></h2>
-<p>The number of confirmed cases is a reference to the number of positive viral COVID 19 tests. It’s entirely dependent on the number of tests administered. There are also Antibody tests that determine if an individual has ever been infected with COVID 19, but I will explain later why antibody test results are not used.</p>
+<p>The number of confirmed cases is a reference to the number of positive viral COVID 19 tests. It’s entirely dependent on the number of tests administered. There are also antibody tests that determine if an individual has ever been infected with COVID 19, but later I’ll why antibody test results are not included in this number.</p>
 </div>
 <div class="section" id="number-of-deaths">
 <h2>Number of deaths:<a class="headerlink" href="#number-of-deaths" title="Permalink to this headline">¶</a></h2>
-<p>The provisional death count, as determined by the CDC, is the number of deaths where COVID 19 was listed as a cause of death, or a ‘presumed’ cause of death. For example, a patient can be infected with the virus, which leads them to develop pneumonia, and eventually die of acute respiratory distress caused by pneumonia. The difficulty in reporting a death due to COVID 19 lies in determining if someone has died <em>due</em> to COVID 19 vs someone who died <em>with</em> the virus. The death reporting issue is further exacerbated by the shortage of COVID 19 tests and forensic pathologists. For this reason, there is the option for medical examiners to declare a probably or presumed cause of death, based on pre-death symptoms and medical records. The total death count of COVID 19 includes both. Granted, death reporting varies by state, some report weekly, daily, and there are often different methods for determining cause of death. Death reporting is also hampered by different levels of social isolation due to social distancing protocols. Especially for those who live alone, it may take days or even weeks to account for their deaths.</p>
+<p>The provisional death count, as determined by the CDC, is the number of deaths where COVID 19 was listed as a cause of death, or a ‘presumed’ cause of death. For example, a patient can be infected with the virus, which leads them to develop pneumonia, and they may eventually die of acute respiratory distress caused by pneumonia. The difficulty in reporting a death due to COVID 19 lies in determining if someone has died <em>due</em> to COVID 19 vs someone who died <em>with</em> the virus. The death reporting issue is further exacerbated by the shortage of COVID 19 tests and forensic pathologists. For this reason, there is the option for medical examiners to declare a probably or presumed cause of death, based on pre-death symptoms and medical records. The total death count for COVID 19 includes both. Granted, death reporting varies by state, some report weekly, others daily, and there are often different methods for determining cause of death. Death reporting is also hampered by different levels of social isolation due to social distancing protocols. Especially for those who live alone, it may take days or even weeks to account for their deaths.</p>
 </div>
 <div class="section" id="number-of-true-infections">
 <h2>Number of true infections:<a class="headerlink" href="#number-of-true-infections" title="Permalink to this headline">¶</a></h2>
 <p>The number of true infections is the number of people who are infected with COVID 19. Without testing the entire population, this number will always be calculated as an estimate. For the remainder of this book, a reference to number of true infections’ will be a reference to an estimation, based on another metric and method of estimation.</p>
 </div>
-<div class="section" id="why-are-confirmed-cases-a-poor-metric-for-how-bad-the-pandemic-is">
-<h2>Why are “confirmed cases” a poor metric for how bad the pandemic is?<a class="headerlink" href="#why-are-confirmed-cases-a-poor-metric-for-how-bad-the-pandemic-is" title="Permalink to this headline">¶</a></h2>
-<p>Fairly early in the process of researching statistics on the virus, I realized that confirmed case counts are a very poor metric for evaluating the state of COVID 19. After some cursory research I learned that a substantial portion of COVID infections appear to be asymptomatic. Meaning a lot of people may be infected with the Coronavirus, but they won’t exhibit any physical symptoms or signs. As testing kits have been limited, especially in the early stages of the pandemic, there is no incentive for doctors to test seemingly healthy individuals. Thus, confirmed cases are already not accounting for a large portion of the true number of infected individuals, as much as 80% being asymptomatic according to the CDC. Furthermore, case counting is not standardized across states and counties, and different locations will have different levels of resources for suche testing to take place.</p>
+<div class="section" id="why-are-confirmed-cases-a-poor-metric-for-evaluating-the-state-of-the-pandemic">
+<h2>Why are “confirmed cases” a poor metric for evaluating the state of the pandemic?<a class="headerlink" href="#why-are-confirmed-cases-a-poor-metric-for-evaluating-the-state-of-the-pandemic" title="Permalink to this headline">¶</a></h2>
+<p>Fairly early in the process of researching statistics on the virus, I realized that confirmed case counts are a very poor metric for evaluating the state of COVID 19. After some cursory research I learned that a substantial portion of COVID infections appear to be asymptomatic. Meaning a lot of people may be infected with the Coronavirus, but they won’t exhibit any physical symptoms or signs. As testing kits have been limited, especially in the early stages of the pandemic, there is no incentive for doctors to test seemingly healthy individuals. Thus, confirmed cases are already not accounting for a large portion of the true number of infected individuals, as much as 80% being asymptomatic according to the CDC. Furthermore, case counting is not standardized across states and counties, and different locations will have different levels of resources for such testing to take place.</p>
 </div>
 </div>
 
@@ -210,15 +218,15 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="CH_1.html" title="previous page">Chapter 1: Metrics</a>
-    <a class='right-next' id="next-link" href="CH_1-2.html" title="next page">Chapter 1.1: Metrics</a>
+    <a class='left-prev' id="prev-link" href="CH_1.html" title="previous page">Chapter 1: Framework</a>
+    <a class='right-next' id="next-link" href="CH_1-2.html" title="next page">Chapter 1.2: Metrics</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         
-          By The Jupyter Book community<br/>
+          By Abigayle Mercer<br/>
         
             &copy; Copyright 2020.<br/>
       </p>
