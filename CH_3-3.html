@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection &#8212; An analysis of COVID 19: confirmed cases undermine our current predicament</title>
+    <title>Chapter 3.3: Maricopa County’s Estimated Infections and Rate of Detection &#8212; Are we flattening the curve? A look at the current state of of COVID-19 in the US</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">An analysis of COVID 19: confirmed cases undermine our current predicament</h1>
+  <h1 class="site-logo" id="site-title">Are we flattening the curve? A look at the current state of of COVID-19 in the US</h1>
   
 </a>
 </div>
@@ -232,13 +232,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11c981c50&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11df10490&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_2_1.png" src="_images/CH_3-3_2_1.png" />
 </div>
 </div>
-<p>This graph displays Maricopa’s estimated number of infeections, calculated with death counts and a death rate of 1%, and the the number of confimred cases of COVID 19. Both infection estimate and confirmed cases are on a accelerating trajectory, but similar to LA county, Maricopa’s confirmed case count is substantially lower than the possible true number of infections.</p>
+<p>This graph displays Maricopa’s estimated number of infections, calculated with death counts and a death rate of 1%, and the the number of confimred cases of COVID 19. Both infection estimate and confirmed cases are on an accelerating trajectory, but similar to LA County, Maricopa’s confirmed case count is substantially lower than the possible true number of infections.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span> <span class="o">=</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="mi">55</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -247,14 +247,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x11a37ded0&gt;]],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x113acddd0&gt;]],
       dtype=object)
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_4_1.png" src="_images/CH_3-3_4_1.png" />
 </div>
 </div>
-<p>To determine the average detection rate in Maricopa county, the number of reported cases is divided by it’s esetimated counterpart for each date. As displayed in the histogram, Maricopa appears to detect approximately 10-20% of all COVID 19 cases.</p>
+<p>To determine the average detection rate in Maricopa county, the number of reported cases is divided by its estimated counterpart for each date. As displayed in the histogram, Maricopa appears to detect approximately 10-20% of all COVID 19 cases.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;detection_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df_MC</span><span class="p">[</span><span class="s1">&#39;103_cases&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.2</span>
@@ -270,13 +270,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11aafe750&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11bb62250&gt;
 </pre></div>
 </div>
 <img alt="_images/CH_3-3_6_1.png" src="_images/CH_3-3_6_1.png" />
 </div>
 </div>
-<p>Maricopa’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated. In this graph I chose a conservative 20% detection rate, and divided confirmed cases by that decimal aproximation. To cross validate for accuracy, the detection rate cases are compared to the original infection estimation based on a 1% death rate and reported deaths. As you can see, the two estimates follow similar trajectorys, with death rate calculated infections reporting higher infections until approximately June 2nd, where they cross over. One possible explanation for this is poor testing practices, especially in the early stages of COVID 19. It’s relatively safe to assume that counties were under reporting COVID 19 cases due to a shortage of kits and other factors. As more tests become available, many people take the initiative to get themselves tested, regardless of symptoms present.</p>
+<p>Maricopa’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating infection estimates based on death rates with those based on detection rates, the validity of both estimation methods can be evaluated. In this graph I created the additional estimate of infections with a conservative 20% detection rate. To cross validate for accuracy, these estimates are compared to the original infection estimation based on a 1% death rate and reported deaths. As you can see, the estimates follow two different trajectories, with death rate calculated infections reporting higher infections until approximately June 2nd, where they cross over. One possible explanation for this is poor testing practices, especially in the early stages of COVID 19. It makes sense that a shortage of testing kits contributed to underreporting of COVID 19 cases. As tests become more available and accessible, more people are able to get tested, regardless of symptoms present.</p>
 </div>
 
 

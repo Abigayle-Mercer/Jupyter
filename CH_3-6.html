@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3.6: How is the virus changing over time? &#8212; An analysis of COVID 19: confirmed cases undermine our current predicament</title>
+    <title>Chapter 3.6: How is the virus changing over time? &#8212; Are we flattening the curve? A look at the current state of of COVID-19 in the US</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">An analysis of COVID 19: confirmed cases undermine our current predicament</h1>
+  <h1 class="site-logo" id="site-title">Are we flattening the curve? A look at the current state of of COVID-19 in the US</h1>
   
 </a>
 </div>
@@ -219,7 +219,7 @@
                 
   <div class="section" id="chapter-3-6-how-is-the-virus-changing-over-time">
 <h1>Chapter 3.6: How is the virus changing over time?<a class="headerlink" href="#chapter-3-6-how-is-the-virus-changing-over-time" title="Permalink to this headline">¶</a></h1>
-<p>One of the most important questions to ask concerning COVID 19 infections is, is the number of new infections increasing or decreasing? One way to determine this is by examining the curve of total infections over time.</p>
+<p>One of the most important questions to ask concerning COVID 19 infections is: is the number of new infections increasing or decreasing? One way to determine this is by examining the curve of total infections over time.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -249,7 +249,7 @@
 <img alt="_images/CH_3-6_4_1.png" src="_images/CH_3-6_4_1.png" />
 </div>
 </div>
-<p>Figures 1 and 2 are examples of the two types of curves that could represent Coronavirus infections. The first graph displays logarithmic growth, whereas the second graph increases exponentially. With a complete graph, it’s not difficult to tell the difference between the two. Imagine, however, if I stretched these two graphs out, or if you could only see the very beginning of the curves. It would be very difficult to determine what type of graph you were dealing with. In the early stages of COVID 19, there simply isn’t enough data to construct a graph complete enough to determine ‘flatness’ on visual analysis alone. Fortunately, there are some simple calculus tools that can help to easily distinguish the curve of a line. Derivatives calculate the rate of change of a function. For example, the derivative of the second graph will have a positive slope because it increases at an increasing rate as x changes. Conversely, the first graph will have a negative slope because it approaches a net change of zero as x increases.</p>
+<p>Figures 1 and 2 are examples of the two types of curves that could represent COVID infections. The first graph displays logarithmic growth and the second increases exponentially. With a complete graph, it’s not difficult to tell the difference between the two. Imagine, however, if I stretched these two graphs out, or if you could only see the very beginning of the curves. It would be very difficult to determine what type of graph you were dealing with. In the early stages of COVID 19, there simply isn’t enough data to construct a graph complete enough to determine ‘flatness’ on visual analysis alone. Fortunately, there are some simple calculus tools that can help to easily distinguish the curve of a line. Derivatives calculate the rate of change of a function. For example, the derivative of the second graph will have a positive slope because it increases at an increasing rate as x changes. Conversely, the first graph will have a negative slope because it approaches a net change of zero as x increases.</p>
 </div>
 <div class="section" id="figure-2">
 <h1>Figure #2<a class="headerlink" href="#figure-2" title="Permalink to this headline">¶</a></h1>
@@ -263,7 +263,7 @@
 <img alt="_images/CH_3-6_7_0.png" src="_images/CH_3-6_7_0.png" />
 </div>
 </div>
-<p>Furthermore, there are also second derivatives, which calculate the rate of change of the rate of change of a function; they are the derivative of the derivative. If the second derivative of a function is positive, then the original function will look something like the second graph, and vice versa. If a second derivitive is zero, this indicates that the original function is linear. In the case of COVID 19 cases, while not ideal, this is the type of graph we would expect infections to follow. Given what I know about the second derivative of a function, taking the second derivative of the estimated infections should yield a graph that provides a clear indication of the curve of the infection slope. I graphed a red bar at zero in the graphs of second derivitives to help evaluate if the graph is positive, negative, or zero. The further the plot is in the red shaded region, the closer the rising infection graph is to Figure #2’s trajectory. The further the plot is in the blue shaded region, the closer the infection graph is to Figure #1’s trajectory. I also took derivitives of the curvefit models I used in Chapter 3.5, rather than the original infection estimates. This was done to smooth out the derivitives, as they were greatly affected by the varience in data.</p>
+<p>Furthermore, there are also second derivatives, which calculate the rate of change of the rate of change of a function; they are the derivative of the derivative. If the second derivative of a function is positive, then the original function will look something like the second graph, and vice versa. If a second derivative is zero, this indicates that the original function is linear. In the case of COVID 19 cases, while not ideal, this is the type of graph we would expect infections to follow. Given what I know about the second derivative of a function, taking the second derivative of the estimated infections should yield a graph that provides a clear indication of the curve of the infection slope. I graphed a red bar at zero in the graphs of second derivatives to help evaluate if the graph is positive, negative, or zero. The further the plot is in the red shaded region, the closer the rising infection graph is to Figure #2’s trajectory. The further the plot is in the blue shaded region, the closer the infection graph is to Figure #1’s trajectory. I also took derivatives of the curvefit models I used in Chapter 3.5, rather than the original infection estimates. This was done to smooth out the derivatives, as they were greatly affected by the variance in the data.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv&#39;</span><span class="p">)</span>
@@ -298,8 +298,8 @@
 <img alt="_images/CH_3-6_11_0.png" src="_images/CH_3-6_11_0.png" />
 </div>
 </div>
-<p>This graph is a representation of the infection rate as a percent of the total population of Cook County. For objective comparison, all the derivitives are normalized by population.<br />
-Remember, Cook’s estimated infections first increased exponentially and then followed a logarithmic curve. It’s first derivitive follows an overall positive slope and then negative: as I would expect. As the infection rate approaches zero, Cook county’s total infections will eventually cap.</p>
+<p>This graph is a representation of the infection rate as a percent of the total population of Cook County. For objective comparison, all the derivatives are normalized by population.<br />
+Remember, Cook’s estimated infections first increased exponentially and then followed a logarithmic curve. The first derivative follows an overall positive slope and then negative, which matches this. As the infection rate approaches zero, Cook County’s total infections will eventually cap.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_second_derivitive</span><span class="p">(</span><span class="n">deaths_df_CK</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="mi">5150233</span><span class="p">)</span>
@@ -310,7 +310,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_13_0.png" src="_images/CH_3-6_13_0.png" />
 </div>
 </div>
-<p>As indicated by case rate, the second derivitive, or change in infection rate, hovers above zero in the red shaded region. And just as the total infection graph turned over, the rate of infection rate trends toward the blue highlighted region. You can see that there is a ‘blip’ in the graph around the beggining of May. If this graph were a perfect representation of a population’s infection rate without any human intervention, there would be a perfect smooth curve up into the red and then below into the blue. This blip is indicative of an infection spike. A spike could be caused by a group of buisinesses opening up, a protest rally, or change in policy. Looking at how the dates of pontentially important events affect infection rates accross counties will be investigated in the next chapter.</p>
+<p>As indicated by case rate, the second derivative, or change in infection rate, hovers above zero in the red shaded region. As the total infection graph turns over, the rate of infection rate trends toward the blue highlighted region. You can see that there is a ‘blip’ in the graph around the beginning of May. If this graph were a perfect representation of a population’s infection rate without any human intervention, there would be a perfect smooth curve up into the red and then below into the blue. This blip is indicative of an infection spike. A spike could be caused by a group of businesses opening up, a protest rally, or change in policy. In the next chapter, I look into how potentially important events correspond to infection rates across counties.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">204</span><span class="p">,:]</span>
@@ -347,7 +347,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_18_0.png" src="_images/CH_3-6_18_0.png" />
 </div>
 </div>
-<p>This graph displays only a slight fluctuation in case rate, generally only affecting .1% of the population each day. Such consistency suggests the virus is spreading at a general linear rate.</p>
+<p>This graph displays only a slight fluctuation in case rate, generally only affecting .1% of the population each day. This consistency suggests the virus is spreading at a general linear rate.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_second_derivitive</span><span class="p">(</span><span class="n">deaths_df_LA</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="mi">10039107</span><span class="p">)</span>
@@ -358,7 +358,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_20_0.png" src="_images/CH_3-6_20_0.png" />
 </div>
 </div>
-<p>This graph confirms the constant case rate, as it dips above and below the zero line multiple times. A function will only have a second derivitive of zero if it progresses linearly. In the case of viral infections, this can mean either there are no new infections, hence a linear rate of zero, or infections are rising at a linear rate with no sign of speeding up or slowing down. Because we can look at the original graph of total infection estimates, as displayed in chapter 3-2, it is clear that LA county has not turned over and infections continue to rise.</p>
+<p>This graph confirms a relatively constant case rate, as it dips above and below the zero line multiple times. A function will only have a second derivative of zero if it progresses linearly. In the case of viral infections, this can mean either there are no new infections, hence a linear rate of zero, or infections are rising at a linear rate with no sign of speeding up or slowing down. The original graph of total infection estimates, displayed in Chapter 3-2, demonstrates that LA County has not turned over and infections continue to rise.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_HR</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">362</span><span class="p">,:]</span>
@@ -390,7 +390,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_24_0.png" src="_images/CH_3-6_24_0.png" />
 </div>
 </div>
-<p>Miami-Dade’s infection rate appears to have no significant increase or decrease, rising slightly above zero. Absent of any major fluctuations, this graph suggests the virus is spreading a slow, but steady linear rate.</p>
+<p>Miami-Dade’s infection rate appears to have no significant increase or decrease, rising slightly above zero. Absent of any major fluctuations, this graph suggests the virus is spreading at a slow, but steady linear rate.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_second_derivitive</span><span class="p">(</span><span class="n">deaths_df_HR</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="mi">2716940</span><span class="p">)</span>
@@ -401,7 +401,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_26_0.png" src="_images/CH_3-6_26_0.png" />
 </div>
 </div>
-<p>As mentioned previously, a second derivitive of zero indicates a linear case count. Despite the variance, this graph seems to have a net change of zero. Miami-Dade’s infection rate is rising as expected.</p>
+<p>As mentioned previously, a second derivative of zero indicates a linear case count. Despite the variance, this graph seems to have a net change of zero. Miami-Dade’s infection rate is rising as expected.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_RS</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">218</span><span class="p">,:]</span>
@@ -433,7 +433,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_30_0.png" src="_images/CH_3-6_30_0.png" />
 </div>
 </div>
-<p>Of all of the counties I researched, Riverside appears to have the lowest infection rate each day. This graph suggest that the infection rate may be rising slightly, but more data is needed to reach a conclusion. If Riverside infections are rising linearly, the slope is low and probably managable for the health care system.</p>
+<p>Of all of the counties I researched, Riverside appears to have the lowest infection rate each day. This graph suggests that the infection rate may be rising slightly, but more data is needed to reach a conclusion. If Riverside infections are rising linearly, the slope is low and it is unlikely their healthcare system will be overwhelmed.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_second_derivitive</span><span class="p">(</span><span class="n">deaths_df_RS</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="mi">2470546</span><span class="p">)</span>
@@ -444,7 +444,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_32_0.png" src="_images/CH_3-6_32_0.png" />
 </div>
 </div>
-<p>Interestingly, the shape of this graph is remarkably similar to Miami-Dade’s second derivitive. Both plots hover around the red line at zero, relflecting the consistency in the case rate above.</p>
+<p>Interestingly, the shape of this graph is remarkably similar to Miami-Dade’s second derivative. Both plots hover around the red line at zero, relflecting the consistency in the case rate above.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_MC</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">103</span><span class="p">,:]</span>
@@ -476,7 +476,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_36_0.png" src="_images/CH_3-6_36_0.png" />
 </div>
 </div>
-<p>Maricopa appears to have a consistent rate at about 0.01%of the population being infectd per day. In the last few weeks, however, there is a significant increase. Maricopa county lifted their stay at home order on May 15th, which may explain the rising case rates. The graph begins it’s climb about 2 weeks after May 15th, which checks out with the the virus’s 2 week average incubation period, and 18 day time until death.</p>
+<p>Maricopa appears to have a consistent rate of about 0.01% of the population being infected per day. In the last few weeks, however, there has been a significant increase. Maricopa County lifted their stay at home order on May 15th, which may explain the rising case rates. The graph begins its climb about 2 weeks after May 15th, which makes sense considering the virus’s 2 week average incubation period and 18 day time until death.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_second_derivitive</span><span class="p">(</span><span class="n">deaths_df_MC</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="mi">4485414</span><span class="p">)</span>
@@ -487,7 +487,7 @@ Remember, Cook’s estimated infections first increased exponentially and then f
 <img alt="_images/CH_3-6_38_0.png" src="_images/CH_3-6_38_0.png" />
 </div>
 </div>
-<p>Maricopa county infections appear to continue to rise exponentially, due to the positive trend in this graph. You can see that in the last 2 weeks the plot hovers exclusively in the red shaded region. This graph is supported by the estimated infection graph in Chapter 3.3, where the plot rises exponentially.</p>
+<p>Maricopa County infections appear to continue to rise exponentially, due to the positive trend in this graph. You can see that in the last 2 weeks the plot hovers exclusively in the red shaded region. This graph is supported by the estimated infection graph in Chapter 3.3, where the plot rises exponentially.</p>
 </div>
 
 

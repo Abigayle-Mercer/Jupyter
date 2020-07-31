@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3.5: How might the virus spread in the future? &#8212; An analysis of COVID 19: confirmed cases undermine our current predicament</title>
+    <title>Chapter 3.5: How might the virus spread in the future? &#8212; Are we flattening the curve? A look at the current state of of COVID-19 in the US</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">An analysis of COVID 19: confirmed cases undermine our current predicament</h1>
+  <h1 class="site-logo" id="site-title">Are we flattening the curve? A look at the current state of of COVID-19 in the US</h1>
   
 </a>
 </div>
@@ -203,8 +203,8 @@
                 
   <div class="section" id="chapter-3-5-how-might-the-virus-spread-in-the-future">
 <h1>Chapter 3.5: How might the virus spread in the future?<a class="headerlink" href="#chapter-3-5-how-might-the-virus-spread-in-the-future" title="Permalink to this headline">¶</a></h1>
-<p>Without sufficient data, it’s virtually impossible to predict exactly how the virus will spread. There are too many unknown variables: how counties will react with policy, the compliency of citizens, if and how the virus may evolve, and whether or not health care systems will be able to accomodate new cases.<br />
-There are tools that can extrapolate out possible predictions, but the results are based on the assumption that nothing changes, which is highly unlikely. Understanding the bias that this method introduces, I used a package called curvefit to predict the course of the virus in different counties and where the infection count may cap.</p>
+<p>Without sufficient data, it’s virtually impossible to predict exactly how the virus will spread. There are too many unknown variables: how county policies will change, how compliant citizens will be, if and how the virus may evolve, and whether or not health care systems will be able to accomodate new cases.<br />
+There are tools that can extrapolate possible predictions, but the results are based on the assumption that nothing changes, which is highly unlikely. Understanding the bias that this method introduces, I used a package called curvefit to predict the course of the virus in different counties and where the infection count may cap.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -274,13 +274,13 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>206280.9347078527
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>215971.8736745463
 </pre></div>
 </div>
 <img alt="_images/CH_3-5_5_1.png" src="_images/CH_3-5_5_1.png" />
 </div>
 </div>
-<p>The data points for Miami-Dade don’t appear to be on a flattened trajetory yet, whereas the curvefit model suggests that Miami-Dade will reach it’s maximum number of infections relatively soon. When exactly Miami-Dade will turn over cannot be determined, especially with estimates as crude as these, but the maximum infection estimate of 200,000 may have some merit.</p>
+<p>The data points for Miami-Dade don’t appear to be on a flattened trajectory yet, whereas the curvefit model suggests that Miami-Dade will reach its maximum number of infections relatively soon. When exactly Miami-Dade will turn over cannot be determined, especially with estimates as crude as these, but I estimate the maximum number of infections to be around 200,000.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_CK</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">610</span><span class="p">,:]</span>
@@ -335,13 +335,13 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>483520.53518232104
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>484024.80875769455
 </pre></div>
 </div>
 <img alt="_images/CH_3-5_9_1.png" src="_images/CH_3-5_9_1.png" />
 </div>
 </div>
-<p>The data for Cook county thus far suggests that COVID 19 infections have nearly turned over, and the virus may have run it’s course. The curvefit model doesn’t appear to have much work to do, with such a normalized and complete infection estimate thus far. Unless Cook has another spike in infections, this model is probably fairly accurate in assuming that the maximum number of infections is nearly half a million.</p>
+<p>The data for Cook county thus far suggests that COVID 19 infections have nearly turned over, and the virus may have run its course. The curvefit model doesn’t appear to have much work to do, with such a normalized and complete infection estimate thus far. Unless Cook has another spike in infections, this model is probably fairly accurate in assuming that the maximum number of infections is nearly half a million.</p>
 <div class="cell tag_hide tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deaths_df_LA</span> <span class="o">=</span> <span class="n">deaths_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">204</span><span class="p">,:]</span>
@@ -396,13 +396,13 @@ There are tools that can extrapolate out possible predictions, but the results a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>520457.1512675781
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>528951.840216023
 </pre></div>
 </div>
 <img alt="_images/CH_3-5_13_1.png" src="_images/CH_3-5_13_1.png" />
 </div>
 </div>
-<p>The data points for Los Angeles appear to continue to rise at a linear rate, if not exponential. This model, however, assumes infection numbers will turn over soon, and thus the maximum potential number of infections isn’t that much greater than the current number of estimated infections. With a population of over 10 million people, I would say that LA’s potential number of infections is much higher than this models estimate of 450,000.</p>
+<p>The data points for Los Angeles appear to continue to rise at a linear rate, if not exponential. This model, however, indicates infection numbers will turn over soon, and thus the maximum potential number of infections isn’t much greater than the current number of estimated infections. With a population of over 10 million people, I would say that LA’s potential number of infections is much higher than the model’s estimate of 450,000.</p>
 </div>
 
 
