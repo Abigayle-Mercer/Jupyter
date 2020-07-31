@@ -33,13 +33,13 @@ plt.xlabel('days')
 plt.ylabel('total infections at 1%')
 plt.legend()
 
-This graph displays LA's estimated number of infections, calculated with death counts and a death rate 0f 1%, and the number of confirmed cases of COVID 19. The death rate calculated infection estimate appears to be on a decelerating trajectory, and confirmed cases still display expontential growth. Regardless, you can see that the potential number of infections is far greater than the number of cases reported. 
+This graph displays LA's estimated number of infections, calculated with death counts and a death rate of 1%, and the number of confirmed cases of COVID 19. Estimated infections appear to be on a decelerating trajectory, while confirmed cases still display expontential growth. Regardless, this shows that the estimated number of true infections is far greater than the number of cases reported. 
 
 df = df[15:-1]
 df['detection_rate'] = df['total_cases'] / df['total_infections']
 df.hist(column='detection_rate', bins=10, figsize = (12,8))
 
-To determine the average detection rate in LA county, the number of reported cases is divided by it’s estimated counterpart for each date. This histogram represents the distribution of each day's calculated detection rate. As displayed in the plot, LA appears to detect approximately 10-20% of all COVID 19 cases. 
+To determine the average detection rate in LA county, the number of reported cases is divided by its estimated counterpart for each date. This histogram represents the distribution of each day's calculated detection rate. As displayed in the plot, LA appears to detect approximately 10-20% of all COVID 19 cases. 
 
 df['detection_cases'] = df['total_cases'] / 0.2
 
@@ -51,4 +51,5 @@ plt.xlabel('days')
 plt.ylabel('total infections at 1%')
 plt.legend()
 
-LA’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated. In this graph I chose a conservative 20% detection rate, and divided confirmed cases by that decimal aproximation. To cross validate for accuracy, the detection rate cases are compared to the original infection estimation based on a 1% death rate and reported deaths. As you can see, the two estimates follow two different trajectorys, with death rate calculated infections reporting higher infections until approximately June 2nd, where they cross over. One possible explanation for this is poor testing practices, especially in the early stages of COVID 19. It's relatively safe to assume that counties were under reporting COVID 19 cases due to a shortage of kits and other factors. As more tests become available, many people may take the initiative to get themselves tested, regardless of symptoms present.
+LA’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating infection estimates based on death rates with those based on detection rates, the validity of both estimation methods can be evaluated. In this graph I created the additional estimate of infections with a conservative 20% detection rate. To cross validate for accuracy, these estimates are compared to the original infection estimation based on a 1% death rate and reported deaths. As you can see, the estimates follow two different trajectories, with death rate calculated infections reporting higher infections until approximately June 2nd, where they cross over. One possible explanation for this is poor testing practices, especially in the early stages of COVID 19. It makes sense that a shortage of testing kits contributed to underreporting of COVID 19 cases. As tests become more available and accessible, more people are able to get tested, regardless of symptoms present.
+

@@ -36,7 +36,7 @@ fig = px.choropleth(deaths_df, geojson=counties, scope="usa", locations='FIPS', 
 fig.update_layout(title_text = 'Estimated percent of population infected by County')
 fig.show()
 
-This map of the US counties displays the estimated infection rate in the US if a death rate of 1% is applied to the reported death count. Due to the average 18 day delay between infection and death, this graph displays case estimates 18 days prior to the current date. Each county's estimated case count has been standardized by it's 2019 census population as well. The scale reprsents the percent of the population infected by COVID 19. 
+This map of the US counties displays the estimated infection rate in the US if a death rate of 1% is applied to the reported death count. Due to the average 18 day delay between infection and death, this graph displays case estimates 18 days prior to the current date. Each county's estimated case count has been standardized by its population, based on 2019 Census data. The scale reflects the percent of the population infected by COVID 19. 
 
 with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
     counties = json.load(response)
@@ -46,4 +46,5 @@ fig = px.choropleth(confirmed_df, geojson=counties, scope="usa", locations='FIPS
 fig.update_layout(title_text = 'Percent of population with confirmed cases by County')
 fig.show()
 
-This map displays the number of reported cases by county and standardized by population. As the infection estimate in Figure 1 can only estimate case counts 18 days out, this is a representation of case counts 18 days ago. Each county's confirmed case count has been standardized by it's 2019 census population as well. The scale reprsents the percent of the population infected by COVID 19. 
+This map displays the number of reported cases by county, standardized by population. This is also a representation of case counts 18 days ago to match Figure 1. County populations based on Census data were again used to standardize the confirmed case count. The scale reflects the percent of the population infected by COVID 19. 
+

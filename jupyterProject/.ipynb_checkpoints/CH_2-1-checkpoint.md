@@ -4,7 +4,7 @@ Chapter 2.1: Data Providers
 
 
 #### How/where did you collect data?
-The data for most of the graphs and calculations was pulled from the John Hopkins COVID-19 Data Repository as downloadable csv files. Population counts per county were downloaded from (SOURCE). LA and NYC have data available at their respective county health websites. These sites provide links to their data frames or downloadable csv files. 
+The data for most of the graphs and calculations was pulled from the John Hopkins COVID-19 Data Repository as downloadable csv files. Population counts per county were downloaded from census.gov. LA and NYC have data available at their respective county health websites. These sites provide links to their data frames or downloadable csv files. 
 #### What are some challenges when collecting each data set?
 When looking at specific counties, I made efforts to search their websites for local data. Many of the county websites I parsed store their data in immutable formats, like pdf documents. Or worse, they display semi-interactive graphs of their data, with no access to the raw data they used. Rather than quickly downloading a csv file containing case or death counts over the course of months, the only way to obtain a data table is through manual entry. 
 #### How do counties compare in their data sources?

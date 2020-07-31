@@ -1,7 +1,7 @@
 # Chapter 3.7: How is the infection rate affected by public activity?
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the very beggining of this internship, one of the most pressing questions was prompted with was how has recent public activity affected the COVID 19 infection rate? Have the recent protests caused a spike in infections? Are government stay at home ordes actually slowing down the virus? Can counties open up buisnesses without endangering public health? Investigating these questions requires a method of inspecting county infection rate. Using the graphs I produced in chapter 3.6, and public records of COVID 19 updates for Miami-Dade and LA county, I searched for a corelation between public activity and changes in infection rate.   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defining what constitutes as causation, rather than correlation, is important in determining whether or not these public events cause spikes or declines in infection rate. On average, COVID 19 has a five day incubation period according to the CDC. So, if a group of people were all exposed to the virus on the same day, I would expect a spike in cases roughly 5 days later. In the event that a group of people were not all exposed on the same day, rather, over a range of possible days, I would expect a distict but gradual increase in the case rate, beggining 5 days later. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the very beginning of this internship, one of the most pressing questions I was prompted with was: how has recent public activity affected the COVID 19 infection rate? Have the recent protests caused a spike in infections? Are government stay at home orders actually slowing down the virus? Can counties open up buisnesses without endangering public health? Investigating these questions requires inspecting county infection rate. Using the graphs I produced in Chapter 3.6, and public records of COVID 19 updates for Miami-Dade and LA counties, I searched for a correlation between public activity and changes in infection rate.   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On average, COVID 19 has a five day incubation period, according to the CDC. Therefore, if a group of people were all exposed to the virus on the same day, I would expect a spike in cases roughly 5 days later. In the event that a group of people were not all exposed on the same day, rather, over a range of possible days, I would expect a distinct but gradual increase in the case rate, beginning 5 days later. 
 
 import pandas as pd
 import requests
@@ -58,7 +58,7 @@ plt.xticks(np.arange(0, 166, step=22))
 plt.scatter(index_val-66, 0.00035, s=100)
 plt.scatter(index_val-56, 0.00029, s=100)
 
-The first blue dot on this graph marks the date when Maricopa began reopening, starting with salons and dine-in restarants. The orange dot marks when the stay home order offically expired. The date which Maricopa lifted their stay at home order seems to be the most compelling, as it lies on graph where the infection rate begins increasing again. This suggests Maricopa's policy changes directly caused a new spike in their county's infections.
+The first blue dot on this graph marks the date when Maricopa began reopening, starting with salons and dine-in restarants. The orange dot marks the date on which the stay home order offically expired. The date which Maricopa lifted their stay at home order seems to be the most significant, as it lies on the graph immediately before the infection rate begins increasing again. This suggests Maricopa's policy changes may have caused a new spike in their county's infections.
 
 deaths_df_MD = deaths_df.iloc[362,:]
 deaths_df_MD = deaths_df_MD.reset_index()
@@ -103,4 +103,5 @@ plt.xticks(np.arange(0, 166, step=22))
 plt.scatter(index_val-58, 0.000279, s=100)
 plt.scatter(index_val-52, 0.000293, s=100)
 
-The first blue dot on this graph marks the date when Miami-Dade began reopening, beggining with their three marina facilities on May 14th. The orange dot marks when all essential and non essential businesses were allowed to reopen to customers. In this case, Miami-Dade's reopening data appears to be the catalyst in their recent infection spike. Like Maricopa's orange dot, the blue marker lies at the point on the graph where the infection rate begins rising again, suggesting that it directly caused the spike. 
+The first blue dot on this graph marks the date when Miami-Dade began reopening, beginning with their three marina facilities on May 14th. The orange dot marks when all essential and non essential businesses were allowed to reopen to customers. In this case, Miami-Dade's reopening data appears to be the catalyst in their recent infection spike. Like Maricopa's orange dot, the blue marker lies at the point on the graph where the infection rate begins rising again, suggesting that it caused the spike. 
+

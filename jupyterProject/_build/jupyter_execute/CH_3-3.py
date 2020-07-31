@@ -38,12 +38,12 @@ plt.xlabel('days')
 plt.ylabel('total infections at 1%')
 plt.legend()
 
-This graph displays Maricopa's estimated number of infeections, calculated with death counts and a death rate of 1%, and the the number of confimred cases of COVID 19. Both infection estimate and confirmed cases are on a accelerating trajectory, but similar to LA county, Maricopa's confirmed case count is substantially lower than the possible true number of infections. 
+This graph displays Maricopa's estimated number of infections, calculated with death counts and a death rate of 1%, and the the number of confimred cases of COVID 19. Both infection estimate and confirmed cases are on an accelerating trajectory, but similar to LA County, Maricopa's confirmed case count is substantially lower than the possible true number of infections. 
 
 merged_df_MC = merged_df_MC[55:-1]
 merged_df_MC.hist(column='detection_rate', bins=10, figsize =(12,8))
 
-To determine the average detection rate in Maricopa county, the number of reported cases is divided by it's esetimated counterpart for each date. As displayed in the histogram, Maricopa appears to detect approximately 10-20% of all COVID 19 cases. 
+To determine the average detection rate in Maricopa county, the number of reported cases is divided by its estimated counterpart for each date. As displayed in the histogram, Maricopa appears to detect approximately 10-20% of all COVID 19 cases. 
 
 merged_df_MC['detection_cases'] = merged_df_MC['103_cases'] / 0.2
 
@@ -55,4 +55,5 @@ plt.xlabel('days')
 plt.ylabel('total infections at 1%')
 plt.legend()
 
-Maricopa’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating a detection-rate based infection-estimate with the death-rate based infection-estimate, the validity of both estimation methods can be evaluated. In this graph I chose a conservative 20% detection rate, and divided confirmed cases by that decimal aproximation. To cross validate for accuracy, the detection rate cases are compared to the original infection estimation based on a 1% death rate and reported deaths. As you can see, the two estimates follow similar trajectorys, with death rate calculated infections reporting higher infections until approximately June 2nd, where they cross over. One possible explanation for this is poor testing practices, especially in the early stages of COVID 19. It's relatively safe to assume that counties were under reporting COVID 19 cases due to a shortage of kits and other factors. As more tests become available, many people take the initiative to get themselves tested, regardless of symptoms present. 
+Maricopa’s detection rate ranges from approximately 10-20%. Applying these detection rates to confirmed cases would produce another infection estimate, but this metric would incorporate a variable not directly produced by death counts. By cross validating infection estimates based on death rates with those based on detection rates, the validity of both estimation methods can be evaluated. In this graph I created the additional estimate of infections with a conservative 20% detection rate. To cross validate for accuracy, these estimates are compared to the original infection estimation based on a 1% death rate and reported deaths. As you can see, the estimates follow two different trajectories, with death rate calculated infections reporting higher infections until approximately June 2nd, where they cross over. One possible explanation for this is poor testing practices, especially in the early stages of COVID 19. It makes sense that a shortage of testing kits contributed to underreporting of COVID 19 cases. As tests become more available and accessible, more people are able to get tested, regardless of symptoms present.
+
